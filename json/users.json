@@ -4,13 +4,8 @@
       "id": "1",
       "name": "Oladimeji Abdulrazaq",
       "email": "abdulrazaq2a@gmail.com",
-      "password": "12345"
-    },
-    {
-      "name": "Ola Ola5",
-      "email": "olami@gmail.com",
-      "password": "00003",
-      "id": "2"
+      "password": "12345",
+      "image": "http://localhost:8080/images/1720177269625-logo.jpg"
     }
   ]
 }
