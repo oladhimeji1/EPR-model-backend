@@ -16,7 +16,7 @@ const UserModel = mongoose.Schema({
     RSApin: { type: String },
     // Qualification – name, period, certificate
     // Training -  name, period, certificate
-    Photo: { type: String },
+    image: { type: String },
     createAt: { type: Date, default: Date.now() },
 });
 

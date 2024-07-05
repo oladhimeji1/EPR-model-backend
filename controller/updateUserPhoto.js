@@ -10,7 +10,6 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         imageName = Date.now() + "-" + file.originalname
         cb(null, imageName)
-        console.log(5)
         updateImageName(userId,imageName)
     }
 });

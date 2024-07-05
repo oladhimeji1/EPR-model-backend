@@ -3,9 +3,20 @@
     {
       "id": "1",
       "name": "Oladimeji Abdulrazaq",
-      "email": "abdulrazaq2a@gmail.com",
+      "email": "ola21",
       "password": "12345",
-      "image": "http://localhost:8080/images/1720177269625-logo.jpg"
+      "image": "http://localhost:8080/images/1720178060876-logo.jpg",
+      "department": "Computer Science",
+      "site": "abdulrazaqoladimeji.vercel.app",
+      "phoneNumber": "07069223477",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "address": "Kubwa Abuja",
+      "dateOfBirth": "24 Apr, 2024",
+      "bankName": "First Bank",
+      "accountNo": "3133587257",
+      "pensionManager": "120,000,000",
+      "RSApin": "2345"
     }
   ]
 }
