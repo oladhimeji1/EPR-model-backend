@@ -1,15 +1,16 @@
 const fs = require('fs');
 const multer = require('multer');
 
-var imageName, userId;
+var imageName = [], userId;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './public/images/')
+        cb(null, 'public/images/')
     },
     filename: function (req, file, cb) {
-        imageName = Date.now() + "-" + file.originalname
-        cb(null, imageName)
+        ss = Date.now() + "-" + file.originalname
+        imageName.push(ss)
+        cb(null, ss)
         updateImageName(userId,imageName)
     }
 });
@@ -19,7 +20,8 @@ const upload = multer({ storage: storage }).array('image', 10);
 
 const updateUserPhoto = async (req, res) => {
 
-    userId = req.params.id
+  userId = req.params.id
+  var imageLinks;
   
   try {
     upload(req, res, async (err) => {
@@ -31,9 +33,13 @@ const updateUserPhoto = async (req, res) => {
       if (!req.files) {
         return res.status(403).json({ message: "No file selected" });
       }
+      // console.log(req.files);
+      const files = req.files;
+      imageLinks = files.map(file => `${req.protocol}://${req.get('host')}/public/images/${file.filename}`);
+
+      // console.log(imageLinks)
     });
-    // console.log(2)
-    updateImageName(userId,imageName)
+    updateImageName(userId, imageLinks)
     
   res.status(200).json({ message: 'data and files received and saved successfully!' });
   } catch (error) {
@@ -47,7 +53,6 @@ const updateUserPhoto = async (req, res) => {
 
 const updateImageName = (id, imageName) => {
 
-    console.log(id, imageName)
     fs.readFile(`json/users.json`, "utf8", (err, data) => {
         if (err) {
           console.error("Error reading file:", err);
