@@ -5,7 +5,6 @@
       "name": "Oladimeji Abdulrazaq",
       "email": "ola21",
       "password": "12345",
-      "image": "http://localhost:8080/images/1720185505265-logo.jpg,1720185505267-logo2.jpg",
       "department": "Computer Science",
       "site": "abdulrazaqoladimeji.vercel.app",
       "phoneNumber": "07069223477",
@@ -16,7 +15,32 @@
       "bankName": "First Bank",
       "accountNo": "3133587257",
       "pensionManager": "120,000,000",
-      "RSApin": "2345"
+      "RSApin": "2345",
+      "image": [
+        "http://localhost:8080/images/1720434161806-logo.jpg",
+        "http://localhost:8080/images/1720434161811-logo2.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Mohammed Abdulrazaq",
+      "email": "ola21",
+      "password": "12345",
+      "department": "Computer Science",
+      "site": "abdulrazaqoladimeji.vercel.app",
+      "phoneNumber": "07069223477",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "address": "Kubwa Abuja",
+      "dateOfBirth": "24 Apr, 2024",
+      "bankName": "First Bank",
+      "accountNo": "3133587257",
+      "pensionManager": "120,000,000",
+      "RSApin": "2345",
+      "image": [
+        "http://localhost:8080/images/1720434161811-logo2.jpg",
+        "http://localhost:8080/images/1720434161806-logo.jpg"
+      ]
     }
   ]
 }

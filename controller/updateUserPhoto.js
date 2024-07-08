@@ -2,26 +2,26 @@ const fs = require('fs');
 const multer = require('multer');
 
 var imageName = [], userId;
+var imageLinks;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/images/')
+      cb(null, 'public/images/')
     },
     filename: function (req, file, cb) {
-        ss = Date.now() + "-" + file.originalname
-        imageName.push(ss)
-        cb(null, ss)
-        updateImageName(userId,imageName)
+      ss = Date.now() + "-" + file.originalname
+      imageName.push(ss)
+      cb(null, ss)
+      // updateImageName(userId, imageLinks);
     }
 });
   
 // Initialize Multer with the storage configuration
-const upload = multer({ storage: storage }).array('image', 10);
+const upload = multer({ storage: storage }).array('files', 10);
 
 const updateUserPhoto = async (req, res) => {
 
   userId = req.params.id
-  var imageLinks;
   
   try {
     upload(req, res, async (err) => {
@@ -33,13 +33,11 @@ const updateUserPhoto = async (req, res) => {
       if (!req.files) {
         return res.status(403).json({ message: "No file selected" });
       }
-      // console.log(req.files);
       const files = req.files;
-      imageLinks = files.map(file => `${req.protocol}://${req.get('host')}/public/images/${file.filename}`);
+      imageLinks = files.map(file => `${req.protocol}://${req.get('host')}/images/${file.filename}`);
 
-      // console.log(imageLinks)
-    });
     updateImageName(userId, imageLinks)
+    });
     
   res.status(200).json({ message: 'data and files received and saved successfully!' });
   } catch (error) {
@@ -71,7 +69,8 @@ const updateImageName = (id, imageName) => {
             }
     
             // Update the user information
-            users[userIndex] = { ...users[userIndex], image: 'http://localhost:8080/images/' + imageName };
+            users[userIndex] = { ...users[userIndex], image: imageName };
+            
     
     
           // Convert the modified data back to JSON
