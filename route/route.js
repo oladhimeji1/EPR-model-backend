@@ -15,8 +15,8 @@ const getImage = require("../controller/getImage");
 router.post("/newuser", registerUser);
 router.post("/login", login);
 
-router.get("/user/:id", getOneUserById);
 router.get("/users", getAllUsers);
+router.get("/user/:id", getOneUserById);
 router.get("/images/:id", getImage);
 
 router.put("/updateprofile/:id", updateProfile);
