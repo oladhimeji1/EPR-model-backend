@@ -2,6 +2,8 @@ const express = require ("express");
 const router = require ("./route/route");
 var cors = require("cors");
 const mongoose = require("mongoose");
+const { config } = require("dotenv");
+config();
 
 const app = express();
 
@@ -29,7 +31,7 @@ app.listen(port, () => {
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("mongodb connect");
+      console.log("Mongodb is connect and running");
     })
     .catch((err) => {
       console.log(err);

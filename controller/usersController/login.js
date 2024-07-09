@@ -1,5 +1,5 @@
-const fs = require('fs');
 const User = require('../../model/userModel');
+const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
 
@@ -14,14 +14,22 @@ const login = async (req, res) => {
     try{
 
         const user = await User.findOne({ email });
+        const psw = await User.findOne({ password });
 
-        if (!user) {
+        if (!user || !psw) {
             return res.json({
-            message: "No user with this email found",
+            message: "Username or password is incorrect",
             });
         } else {
+
+            // Generate JWT token
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+                expiresIn: "1h", // Token expires in 1 hour
+            });
+
             return res.status(200).json({
                 message: "Login successful",
+                token: token,
                 user: {
                     id: user._id,
                     email: user.email,
