@@ -1,15 +1,17 @@
 
 const fs = require('fs');
+const User = require('../model/userModel');
 
 const getAllUsers = async (req, res) => {
    
-    fs.readFile(`json/users.json`, { encoding: "utf8" }, (err, data) => {
-        if (err) {
-            return res.status(500).json({ message: "Internal server error", error: err.message });
-        } else {
-            res.status(200).send(data);
-        }
-    });
+    try {
+        
+        const users = await User.find();
+        return res.status(200).json({ users });
+    } catch (error) {
+
+        return res.status(500).json({ message: "Internal server error", error: error.message });
+    }
     
 };
 

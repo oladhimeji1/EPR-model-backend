@@ -1,36 +1,23 @@
 const fs = require('fs');
+const User = require('../model/userModel');
 
-const getOneUserById = (req, res) => {
+const getOneUserById = async (req, res) => {
 
-    const userId = req.params.id;
-  
-    // Read the JSON file
-    fs.readFile(`json/users.json`, "utf8", (err, data) => {
-      if (err) {
-        console.error("Error reading file:", err);
-        return res.status(500).send("Internal server error");
-      }
-  
-      try {
-        // Parse the JSON data
-        const jsonData = JSON.parse(data);
-  
-        // Find the user by ID
-        const user = jsonData.users.find((user) => user.id === userId);
+  const userId = req.params.id;
 
-        // MongoDB
-        // const user = UserModel.findById(userId);
-  
-        if (user) {
-          res.status(200).json(user);
-        } else {
-          res.status(404).send("User not found");
-        }
-      } catch (parseError) {
-        console.error("Error parsing JSON data:", parseError);
-        res.status(500).json({ message: "Internal server error", error: error.message });
-      }
-    });
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User with this ID not found" });
+    }
+
+    return res.status(200).json({ user });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
+  }
 };
 
 module.exports = getOneUserById;

@@ -16,7 +16,10 @@ const registerUser = async (req, res) => {
     } else {
         user.save()
             .then((result) => {
-                res.status(200).json(result);
+                res.status(200).json({
+                    message: 'New user created succefully',
+                    user: result
+                });
             })
             .catch(err => {
                 console.log(err);

@@ -1,46 +1,29 @@
-const fs = require('fs');
+const fs = require("fs");
+const User = require("../model/userModel");
 
 const updateProfile = async (req, res) => {
+  const userId = req.params.id;
 
-    // const { username, email, gender } = req.body;
-    const userId = req.params.id;
-    
-    fs.readFile(`json/users.json`, "utf8", (err, data) => {
-        if (err) {
-            console.error("Error reading file:", err);
-            return res.status(500).send("Internal server error");
+  // const { username, email, gender } = req.body;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(
+      userId,
+        req.body,
+        { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
         }
 
-        let jsonData;
-        try {
-            jsonData = JSON.parse(data);
-        } catch (err) {
-            // callback(err);
-            return;
-        }
-
-        // Find the user and update the record
-        const users = jsonData.users;
-        const userIndex = users.findIndex(user => user.id === userId);
-        if (userIndex === -1) {
-            res.status(401).send('User not found');
-            return;
-        }
-
-        // Update the user information
-        users[userIndex] = { ...users[userIndex], ...req.body };
-
-        // Write the updated JSON data back to the file
-        fs.writeFile('json/users.json', JSON.stringify(jsonData, null, 2), 'utf8', err => {
-            if (err) {
-                // callback(err);
-                return;
-            }
-            res.status(200).send({message: 'User updated succefully'});
+        return res.status(200).json({
+            message: "User profile updated successfully",
+            user: updatedUser,
         });
-    });
-    
-    
+    } catch (error) {
+        return res.status(500).json({ message: "Internal server error", error: error.message });
+    }
 };
 
 module.exports = updateProfile;
