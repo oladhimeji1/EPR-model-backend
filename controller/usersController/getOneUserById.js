@@ -1,5 +1,5 @@
 const fs = require('fs');
-const User = require('../model/userModel');
+const User = require('../../model/userModel');
 
 const getOneUserById = async (req, res) => {
 

@@ -1,11 +1,9 @@
 const fs = require("fs");
-const User = require("../model/userModel");
+const User = require('../../model/userModel');
 
 const updateProfile = async (req, res) => {
+    
   const userId = req.params.id;
-
-  // const { username, email, gender } = req.body;
-
     try {
         const updatedUser = await User.findByIdAndUpdate(
       userId,

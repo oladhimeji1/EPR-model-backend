@@ -1,12 +1,10 @@
+const Request = require('../../model/requestModel');
 
-const fs = require('fs');
-const User = require('../model/userModel');
-
-const getAllUsers = async (req, res) => {
+const getAllRequest = async (req, res) => {
    
     try {
         
-        const users = await User.find();
+        const users = await Request.find();
         return res.status(200).json({ users });
     } catch (error) {
 
@@ -15,4 +13,4 @@ const getAllUsers = async (req, res) => {
     
 };
 
-module.exports = getAllUsers;
+module.exports = getAllRequest;

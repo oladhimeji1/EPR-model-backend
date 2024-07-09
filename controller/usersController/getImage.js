@@ -3,7 +3,7 @@ const path = require('path')
 
 const getImage = async (req, res) => {
     
-    let filePath = path.join(__dirname, '../public', req.url === '/' ? 'index.html' : req.url)
+    let filePath = path.join(__dirname, '../../public', req.url === '/' ? 'index.html' : req.url)
 
     let contentType = 'text/html'
 
