@@ -10,11 +10,11 @@ const updateRequest = async (req, res) => {
         );
 
         if (!updatedUser) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: "record not found" });
         }
 
         return res.status(200).json({
-            message: "User profile updated successfully",
+            message: "Record updated successfully",
             user: updatedUser,
         });
     } catch (error) {
