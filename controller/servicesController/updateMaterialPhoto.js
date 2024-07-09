@@ -43,7 +43,7 @@ const updateMaterialPhoto = async (req, res) => {
     return res.status(500).json({
       code: "SERVER_ERROR",
       message: "Something went wrong, please try again",
-      error: error
+      error: error.message
     });
   }
   
