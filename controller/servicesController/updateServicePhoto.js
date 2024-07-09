@@ -58,7 +58,7 @@ const updateImageName = async (req, res) => {
       );
 
       if (!requestItem) {
-          return res.status(404).json({ message: "User not found" });
+          return res.status(404).json({ message: "Record not found" });
       }
 
       // return res.json({
