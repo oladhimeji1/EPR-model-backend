@@ -38,11 +38,12 @@ const updateMaterialPhoto = async (req, res) => {
       await updateImageName(req, res)
     });
     
-  res.status(200).json({ message: 'User profile updated successfully' });
+  res.status(200).json({ message: 'Image updated successfully' });
   } catch (error) {
     return res.status(500).json({
       code: "SERVER_ERROR",
       message: "Something went wrong, please try again",
+      error: error
     });
   }
   

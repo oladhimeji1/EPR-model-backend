@@ -20,10 +20,6 @@ app.get("*", (req, res) => {
   res.send("<h2> Page not found</h2>");
 });
 
-// app.listen(port, () => {
-//   console.log(`Server is running on PORT ${port} `);
-// });
-
 app.listen(port, () => {
   mongoose
     .connect("mongodb://localhost:27017/EPRDB", {
