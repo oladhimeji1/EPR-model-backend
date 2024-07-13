@@ -1,5 +1,5 @@
-const express = require ("express");
-const router = require ("./route/route");
+const express = require("express");
+const router = require("./route/route");
 var cors = require("cors");
 const mongoose = require("mongoose");
 const { config } = require("dotenv");
@@ -8,10 +8,10 @@ config();
 const app = express();
 
 app.use(cors());
-const port = process.env.Port || 8080;
+const port = process.env.Port || 7000;
 
-  // Express midleware
-app.use(express.urlencoded({extended: true,}));
+// Express midleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", router);
