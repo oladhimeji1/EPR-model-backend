@@ -1,11 +1,11 @@
-const Request = require('../../model/requestModel');
+const { Materials } = require('../../model/requestModel');
 
 const getOneRequestById = async (req, res) => {
 
   const userId = req.params.id;
 
   try {
-    const request = await Request.findById(userId);
+    const request = await Materials.findById(userId);
 
     if (!request) {
       return res.status(404).json({ message: "No record found" });

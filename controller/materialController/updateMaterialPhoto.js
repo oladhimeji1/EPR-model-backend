@@ -1,5 +1,5 @@
 const multer = require('multer');
-const Request = require('../../model/requestModel');
+const { Materials } = require('../../model/requestModel');
 
 var imageName, requestId;
 var imageLinks;
@@ -16,9 +16,9 @@ const storage = multer.diskStorage({
 });
   
 // Initialize Multer with the storage configuration
-const upload = multer({ storage: storage }).array('files', 10);
+const upload = multer({ storage: storage }).array('image', 10);
 
-const updateServicePhoto = async (req, res) => {
+const updateMaterialPhoto = async (req, res) => {
 
   requestId = req.params.id
   
@@ -52,13 +52,13 @@ const updateServicePhoto = async (req, res) => {
 const updateImageName = async (req, res) => {
 
   try {
-      const requestItem = await Request.findByIdAndUpdate(
+      const requestItem = await Materials.findByIdAndUpdate(
         requestId,
-        {serviceImage: imageLinks},
+        {materialImage: imageLinks},
       );
 
       if (!requestItem) {
-          return res.status(404).json({ message: "Record not found" });
+          return res.status(404).json({ message: "User not found" });
       }
 
       // return res.json({
@@ -71,4 +71,4 @@ const updateImageName = async (req, res) => {
   }
 }
 
-module.exports = updateServicePhoto;
+module.exports = updateMaterialPhoto;
