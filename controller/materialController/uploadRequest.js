@@ -1,8 +1,8 @@
-const Request = require('../../model/requestModel');
+const {  Mateials } = require('../../model/requestModel');
 
 const uploadRequest = async (req, res) => {
 
-    const request = new Request(req.body);
+    const request = new Mateials(req.body);
 
     try {
         request.save()

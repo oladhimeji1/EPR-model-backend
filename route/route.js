@@ -12,12 +12,18 @@ const updateUserPhoto = require("../controller/usersController/updateUserPhoto")
 const getImage = require("../controller/usersController/getImage");
 const updateQualificationCertificate = require("../controller/usersController/updateQualificationCertificate");
 const updateTrainingCertificate = require("../controller/usersController/updateTrainingCertificate");
-const uploadRequest = require("../controller/servicesController/uploadrequest");
-const getAllRequest = require("../controller/servicesController/getAllRequests");
-const updateRequest = require("../controller/servicesController/updateRequest");
-const getOneRequestById = require("../controller/servicesController/getOneRequestById");
-const updateMaterialPhoto = require("../controller/servicesController/updateMaterialPhoto");
-const updateServicePhoto = require("../controller/servicesController/updateServicePhoto");
+const uploadRequest = require("../controller/materialController/uploadrequest");
+const getAllRequest = require("../controller/materialController/getAllRequests");
+const updateRequest = require("../controller/materialController/updateRequest");
+const getOneRequestById = require("../controller/materialController/getOneRequestById");
+const updateMaterialPhoto = require("../controller/materialController/updateMaterialPhoto");
+const deleteMaterial = require("../controller/materialController/deleteMaterial");
+const getAllService = require("../controller/serviceController/getAllService");
+const uploadService = require("../controller/serviceController/uploadService");
+const getOneServiceById = require("../controller/serviceController/getOneServiceById");
+const updateService = require("../controller/serviceController/updateService");
+const updateServicePhoto = require("../controller/serviceController/updateServicePhoto");
+const deleteService = require("../controller/serviceController/deleteService");
 
 //user route
 router.post("/newuser", registerUser);
@@ -35,15 +41,27 @@ router.put("/user/trainingcertificate/:id", updateTrainingCertificate);
 router.delete("/user/:id", deleteUser);
 
 
-// Request routes
-router.post("/newrequest", uploadRequest);
+// Materials Request routes
+router.post("/new-material-request", uploadRequest);
 
-router.get("/all-request", getAllRequest);
-router.get("/request/:id", getOneRequestById);
+router.get("/all-materials", getAllRequest);
+router.get("/material/:id", getOneRequestById);
 
-router.put("/request/:id", updateRequest);
-router.put("/request/material-image/:id", updateMaterialPhoto);
-router.put("/request/service-image/:id", updateServicePhoto);
+router.put("/material/:id", updateRequest);
+router.put("/material/material-image/:id", updateMaterialPhoto);
 
+router.delete("/material/:id", deleteMaterial );
+
+
+// Service requests routes
+router.post("/new-service-request", uploadService);
+
+router.get("/all-service", getAllService);
+router.get("/service/:id", getOneServiceById);
+
+router.put("/service/:id", updateService);
+router.put("/service/service-image/:id", updateServicePhoto);
+
+router.delete("/service/:id", deleteService );
 
 module.exports = router;

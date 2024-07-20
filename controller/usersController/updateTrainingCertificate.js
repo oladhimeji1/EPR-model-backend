@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 });
   
 // Initialize Multer with the storage configuration
-const upload = multer({ storage: storage }).array('files', 10);
+const upload = multer({ storage: storage }).array('image', 10);
 
 const updateTrainingCertificate = async (req, res) => {
 
