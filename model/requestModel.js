@@ -1,35 +1,36 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const materialSchema = mongoose.Schema({
-    requestorName: { type: String },
-    site: { type: String },
-    scope: { type: String },
-    category: { type: String },
-    description: { type: String },
-    specification: { type: String },
-    brand : { type: String },
-    UOM: { type: String },
-    reOrderLevel: { type: String },
-    quantity: { type: String },
-    unitPrice: { type: String },
-    totalCost: { type: String },
-    image: { type: String },
-    createAt: { type: Date, default: Date.now() },  
-});
+// const materialSchema = mongoose.Schema({
+//   requestorName: { type: String },
+//   site: { type: String },
+//   scope: { type: String },
+//   category: { type: String },
+//   description: { type: String },
+//   specification: { type: String },
+//   brand: { type: String },
+//   UOM: { type: String },
+//   reOrderLevel: { type: String },
+//   quantity: { type: String },
+//   unitPrice: { type: String },
+//   totalCost: { type: String },
+//   image: { type: String },
+//   createAt: { type: Date, default: Date.now() },
+// });
 
-const serviceSchema = mongoose.Schema({
-    requestorName: { type: String },
-    site: { type: String },
-    scope: { type: String },
-    category: { type: String },
-    description: { type: String },
-    specification: { type: String },
-    // servicePrice: { type: String },
-    image: { type: String },
-    // item: { type: String },
-    // itemPrice: { type: String },
-})
+// const serviceSchema = mongoose.Schema({
+//   requestorName: { type: String },
+//   site: { type: String },
+//   scope: { type: String },
+//   category: { type: String },
+//   description: { type: String },
+//   specification: { type: String },
+//   // servicePrice: { type: String },
+//   image: { type: String },
+//   // item: { type: String },
+//   // itemPrice: { type: String },
+// });
 
+<<<<<<< HEAD
 const materialRequestInfo = mongoose.Schema({
     categoryName: { type: String },
     specification: { type: String },
@@ -44,11 +45,27 @@ const serviceRequestInfo = mongoose.Schema({
     servicePrice: { type: String },
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 })
+=======
+// const materialRequestInfo = mongoose.Schema({
+//   categoryName: { type: String },
+//   specification: { type: String },
+//   item: { type: String },
+//   itemPrice: { type: String },
+//   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+// });
 
-// Exporting the model directly
-const Materials = mongoose.model("Material", materialSchema);
-const Service = mongoose.model("Service", serviceSchema);
-const materialInfo = mongoose.model("materialRequestInfo", materialRequestInfo);
-const serviceInfo = mongoose.model("serviceRequestInfo", serviceRequestInfo);
+// const serviceRequestInfo = mongoose.Schema({
+//   categoryName: { type: String },
+//   serviceSpecification: { type: String },
+//   servicePrice: { type: String },
+//   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+// });
+>>>>>>> 86339755e276d66a4fce33405fabc22f0ded1eee
 
-module.exports = {Materials, Service, materialInfo, serviceInfo};
+// // Exporting the model directly
+// const Materials = mongoose.model("Material", materialSchema);
+// const Service = mongoose.model("Service", serviceSchema);
+// const materialInfo = mongoose.model("materialRequestInfo", materialRequestInfo);
+// const serviceInfo = mongoose.model("serviceRequestInfo", serviceRequestInfo);
+
+// module.exports = { Materials, Service, materialInfo, serviceInfo };
