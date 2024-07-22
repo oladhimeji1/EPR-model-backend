@@ -30,7 +30,7 @@ const serviceSchema = mongoose.Schema({
     // itemPrice: { type: String },
 })
 
-const materialRequestInfo = mongoose({
+const materialRequestInfo = mongoose.Schema({
     categoryName: { type: String },
     specification: { type: String },
     item: { type: String },
@@ -38,7 +38,7 @@ const materialRequestInfo = mongoose({
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 })
 
-const serviceRequestInfo = mongoose({
+const serviceRequestInfo = mongoose.Schema({
     categoryName: { type: String },
     serviceSpecification: { type: String },
     servicePrice: { type: String },
