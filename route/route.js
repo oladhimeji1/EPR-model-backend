@@ -1,4 +1,4 @@
-const express = require ("express");
+const express = require("express");
 const router = express.Router();
 // const app = express();
 
@@ -25,6 +25,22 @@ const updateService = require("../controller/serviceController/updateService");
 const updateServicePhoto = require("../controller/serviceController/updateServicePhoto");
 const deleteService = require("../controller/serviceController/deleteService");
 
+const {
+  createServiceCategory,
+  updateServiceCategory,
+  deleteServiceCategory,
+  findAllServiceCategories,
+  findServiceCategoryById,
+} = require("../controller/serviceController/serviceCategory/serviceCategoryControllers");
+const {
+  createServiceRequest,
+  updateServiceRequest,
+  deleteServiceRequest,
+  getServiceRequest,
+  getAllServiceRequests,
+} = require("../controller/serviceController/serviceRequest/serviceRequest");
+
+const upload = require("../config/multerconfig");
 //user route
 router.post("/newuser", registerUser);
 router.post("/login", login);
@@ -35,11 +51,13 @@ router.get("/images/:id", getImage);
 
 router.put("/updateprofile/:id", updateProfile);
 router.put("/user/updatepic/:id", updateUserPhoto);
-router.put("/user/qualificationcertificate/:id", updateQualificationCertificate);
+router.put(
+  "/user/qualificationcertificate/:id",
+  updateQualificationCertificate
+);
 router.put("/user/trainingcertificate/:id", updateTrainingCertificate);
 
 router.delete("/user/:id", deleteUser);
-
 
 // Materials Request routes
 router.post("/new-material-request", uploadRequest);
@@ -50,8 +68,7 @@ router.get("/material/:id", getOneRequestById);
 router.put("/material/:id", updateRequest);
 router.put("/material/material-image/:id", updateMaterialPhoto);
 
-router.delete("/material/:id", deleteMaterial );
-
+router.delete("/material/:id", deleteMaterial);
 
 // Service requests routes
 router.post("/new-service-request", uploadService);
@@ -62,6 +79,22 @@ router.get("/service/:id", getOneServiceById);
 router.put("/service/:id", updateService);
 router.put("/service/service-image/:id", updateServicePhoto);
 
-router.delete("/service/:id", deleteService );
+router.delete("/service/:id", deleteService);
+
+// kondiroute
+// service category
+router.post("/service-category", createServiceCategory);
+router.put("/service-category/:id", updateServiceCategory);
+router.delete("/service-category/:id", deleteServiceCategory);
+router.get("/service-category/:id", findServiceCategoryById);
+router.get("/service-categories", findAllServiceCategories);
+
+// servicerequest  routes
+// router.post("/service-request", createServiceRequest);
+router.post("/service-request", createServiceRequest);
+router.put("/service-request/:id", updateServiceRequest);
+router.delete("/service-request/:id", deleteServiceRequest);
+router.get("/service-request/:id", getServiceRequest);
+router.get("/service-requests", getAllServiceRequests);
 
 module.exports = router;

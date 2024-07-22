@@ -8,13 +8,13 @@ config();
 const app = express();
 
 app.use(cors());
-const port = process.env.Port || 7000;
 
-// Express midleware
+// Express midlewar
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", router);
+const port = process.env.Port || 7000;
 
 app.get("*", (req, res) => {
   res.send("<h2> Page not found</h2>");
