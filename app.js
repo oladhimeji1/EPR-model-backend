@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", router);
-const port = process.env.Port || 7000;
+const port = process.env.Port || 8080;
 
 app.get("*", (req, res) => {
   res.send("<h2> Page not found</h2>");

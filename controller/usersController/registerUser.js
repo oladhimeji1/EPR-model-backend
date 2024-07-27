@@ -10,9 +10,9 @@ const registerUser = async (req, res) => {
     });
   }
 
-  if (!email.includes('@')){
+  if (!email.includes("@")) {
     return res.status(400).json({
-      type: 'INVALID_EMAIL',
+      type: "INVALID_EMAIL",
       message: "Please ensure you enter a valid email",
     });
   }
@@ -31,6 +31,7 @@ const registerUser = async (req, res) => {
       .then((result) => {
         res.status(200).json({
           message: "New user created succefully",
+          type: "SUCCESS",
           user: result,
         });
       })
