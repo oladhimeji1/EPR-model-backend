@@ -33,7 +33,6 @@ const registerUser = async (req, res) => {
         res.status(200).json({
           type: 'SUCCESS',
           message: "New user created succefully",
-          type: "SUCCESS",
           user: result,
         });
       })
