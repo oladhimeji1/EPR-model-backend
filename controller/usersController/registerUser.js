@@ -23,6 +23,7 @@ const registerUser = async (req, res) => {
 
   if (emailExist) {
     return res.json({
+      type: 'EMAIL_EXIST',
       message: "User with this email already exist",
     });
   } else {
@@ -30,6 +31,7 @@ const registerUser = async (req, res) => {
       .save()
       .then((result) => {
         res.status(200).json({
+          type: 'SUCCESS',
           message: "New user created succefully",
           user: result,
         });
