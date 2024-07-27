@@ -1,4 +1,4 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 // const materialSchema = mongoose.Schema({
 //   requestorName: { type: String },
@@ -24,13 +24,12 @@
 //   category: { type: String },
 //   description: { type: String },
 //   specification: { type: String },
-//   // servicePrice: { type: String },
-//   image: { type: String },
-//   // item: { type: String },
-//   // itemPrice: { type: String },
+  // servicePrice: { type: String },
+  // image: { type: String },
+  // item: { type: String },
+  // itemPrice: { type: String },
 // });
 
-<<<<<<< HEAD
 const materialRequestInfo = mongoose.Schema({
     categoryName: { type: String },
     specification: { type: String },
@@ -45,7 +44,6 @@ const serviceRequestInfo = mongoose.Schema({
     servicePrice: { type: String },
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 })
-=======
 // const materialRequestInfo = mongoose.Schema({
 //   categoryName: { type: String },
 //   specification: { type: String },
@@ -60,12 +58,12 @@ const serviceRequestInfo = mongoose.Schema({
 //   servicePrice: { type: String },
 //   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 // });
->>>>>>> 86339755e276d66a4fce33405fabc22f0ded1eee
 
 // // Exporting the model directly
 // const Materials = mongoose.model("Material", materialSchema);
 // const Service = mongoose.model("Service", serviceSchema);
-// const materialInfo = mongoose.model("materialRequestInfo", materialRequestInfo);
-// const serviceInfo = mongoose.model("serviceRequestInfo", serviceRequestInfo);
+const materialInfo = mongoose.model("materialRequestInfo", materialRequestInfo);
+const serviceInfo = mongoose.model("serviceRequestInfo", serviceRequestInfo);
 
+module.exports = { materialInfo, serviceInfo };
 // module.exports = { Materials, Service, materialInfo, serviceInfo };

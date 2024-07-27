@@ -42,7 +42,7 @@ const {
 
 const upload = require("../config/multerconfig");
 //user route
-router.post("/newuser", registerUser);
+router.post("/registeruser", registerUser);
 router.post("/login", login);
 
 router.get("/users", getAllUsers);

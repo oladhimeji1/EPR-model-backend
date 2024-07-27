@@ -10,6 +10,13 @@ const registerUser = async (req, res) => {
     });
   }
 
+  if (!email.includes('@')){
+    return res.status(400).json({
+      type: 'INVALID_EMAIL',
+      message: "Please ensure you enter a valid email",
+    });
+  }
+
   const user = new User(req.body);
 
   const emailExist = await User.findOne({ email });
