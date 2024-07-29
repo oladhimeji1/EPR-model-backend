@@ -41,6 +41,8 @@ const {
 } = require("../controller/serviceController/serviceRequest/serviceRequest");
 
 const upload = require("../config/multerconfig");
+const updateEducationalCertificate = require("../controller/usersController/updateEducationalCertificate");
+const updateProfessionalCertificate = require("../controller/usersController/updateQualificationCertificate");
 //user route
 router.post("/registeruser", registerUser);
 router.post("/login", login);
@@ -51,11 +53,9 @@ router.get("/images/:id", getImage);
 
 router.put("/updateprofile/:id", updateProfile);
 router.put("/user/updatepic/:id", updateUserPhoto);
-router.put(
-  "/user/qualificationcertificate/:id",
-  updateQualificationCertificate
-);
+router.put("/user/professionalcertificate/:id", updateProfessionalCertificate);
 router.put("/user/trainingcertificate/:id", updateTrainingCertificate);
+router.put("/user/educationalcertificate/:id", updateEducationalCertificate);
 
 router.delete("/user/:id", deleteUser);
 

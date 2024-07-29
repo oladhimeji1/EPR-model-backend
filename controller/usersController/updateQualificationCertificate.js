@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 // Initialize Multer with the storage configuration
 const upload = multer({ storage: storage }).array('image', 10);
 
-const updateQualificationCertificate = async (req, res) => {
+const updateProfessionalCertificate = async (req, res) => {
 
   userId = req.params.id
   
@@ -40,7 +40,7 @@ const updateQualificationCertificate = async (req, res) => {
       await updateImageName(req, res)
     });
     
-  res.status(200).json({ message: 'User profile updated successfully' });
+  res.status(200).json({ message: 'Qualification certificate updated successfully' });
   } catch (error) {
     return res.status(500).json({
       code: "SERVER_ERROR",
@@ -72,4 +72,4 @@ const updateImageName = async (req, res) => {
   }
 }
 
-module.exports = updateQualificationCertificate;
+module.exports = updateProfessionalCertificate;
