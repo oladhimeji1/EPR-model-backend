@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { create } = require("./userModel");
 
 const materialSchema = mongoose.Schema({
   requestorName: { type: String },
@@ -13,14 +14,15 @@ const materialSchema = mongoose.Schema({
   quantity: { type: String },
   unitPrice: { type: String },
   totalCost: { type: String },
-  image: { type: String },
+  materialImage: { type: String },
   materialcategory: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "materialcategory",
   },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   createAt: { type: Date, default: Date.now() },
 });
 
-Material = mongoose.model("Material", materialSchema);
+Materials = mongoose.model("Material", materialSchema);
 
-module.exports = Material;
+module.exports = Materials;
