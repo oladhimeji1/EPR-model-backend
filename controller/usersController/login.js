@@ -16,7 +16,8 @@ const login = async (req, res) => {
 
     if (!user || !psw) {
       return res.json({
-        message: "email or password is incorrect",
+        type: 'INCORRECT',
+        message: "Email or Password is incorrect",
       });
     } else {
       // Generate JWT token
@@ -25,6 +26,7 @@ const login = async (req, res) => {
       });
 
         return res.status(200).json({
+          type: 'LOGIN',
           message: "Login successful",
           token: token,
           user: user,

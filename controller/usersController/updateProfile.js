@@ -3,7 +3,6 @@ const User = require("../../model/userModel");
 
 const updateProfile = async (req, res) => {
   const userId = req.params.id;
-  const { email } = req.body;
   try {
     const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
